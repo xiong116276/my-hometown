@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,0BAA0B;EACxB,UAAW;IACT,KAAK,EAAE,iBAAiB;AAK1B,mBAAW;EACT,UAAU,EAAE,MAAM;EAEhB,wBAAC;IACC,OAAO,EAAE,SAAS;EAEpB,6DAAkB;IAChB,gBAAgB,EAAE,OAAO;IACzB,iEAAC;MACC,KAAK,EAAE,IAAI",
+"sources": ["reset-bootstrap.scss"],
+"names": [],
+"file": "reset-bootstrap.css"
+}

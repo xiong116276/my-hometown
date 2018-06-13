@@ -1,0 +1,45 @@
+@charset "utf-8";
+//详情页
+#detailContaienr{
+  .main-body{
+    margin-top: 0;
+  }
+}
+.detail-title{
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+}
+.detail-describe{
+  padding: 10px;
+  .describe-section{
+    text-indent: 30px;
+    line-height: 25px;
+  }
+}
+.swiper-container3{
+  width: 350px;
+  height: 250px;
+  margin-top: 10px;
+  .swiper-slide{
+    overflow: hidden;
+    position: relative;
+  }
+  img{
+    max-width: 350px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom:0;
+  }
+}
+.btns{
+  margin: 20px 10px;
+  .btn-prev{
+    float: left;
+  }
+  .btn-next{
+    float: right;
+  }
+}

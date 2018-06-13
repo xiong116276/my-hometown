@@ -1,0 +1,145 @@
+@charset "utf-8";
+//留言
+.leave-word-content{
+  position: relative;
+  textarea{
+    height: 125px;
+  }
+}
+
+.leave-word-title{
+  line-height: 70px;
+  text-align: center;
+  font-size: 25px;
+}
+.input-group{
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  span{
+    color: #d0121a;
+  }
+  .input-title{
+    top: 10px;
+    text-align: right;
+  }
+  .input-content{
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .btn-submit{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #333;
+    text-align: center;
+    color: #333;
+    &:hover{
+      border: 1px solid blue;
+      color: blue;
+    }
+  }
+}
+.leave-word-list{
+  .title{
+    border-bottom: 1px solid #7b8a94;
+  }
+  .leave-word-item{
+    padding: 10px 30px;
+    margin: 0 20px;
+    border-bottom: 1px solid #7b8a94;
+  }
+  .lcontent{
+    padding: 10px 0;
+    text-indent: 25px;
+  }
+  .top{
+    p{
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.leave-word-after{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+
+  .center{
+    margin: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width: 250px;
+    height: 150px;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    color: #000;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+    >div{
+      a{
+        border: 1px solid #748db7;
+        color: #748db7;
+        padding: 5px 10px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+      }
+      margin-top: 20px;
+    }
+    .title{
+      margin: 20px 0;
+      font-size: 30px;
+    }
+  }
+}
+.leave-word-list{
+  padding-bottom: 80px;
+}
+.leave-word-pages{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  .btn{
+    display: inline-block;
+    cursor: pointer;
+  }
+  .pagination-device{
+    display: inline-block;
+    margin: 10px;
+    a{
+      display: inline-block;
+      text-align: center;
+      border: 1px solid #7b8a94;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      margin: 0 3px;
+      padding: 3px 10px;
+      &.active,&:hover{
+        color: blue;
+        border-color: blue;
+      }
+    }
+  }
+
+}
