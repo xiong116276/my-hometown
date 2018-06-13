@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>新闻</title>
+  <style>
+    .item{
+      float:left;
+      width: 438px;
+      border: 1px solid #ccc;
+      margin: 10px 0 0 10px;
+      padding: 10px;
+      height: 370px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <script src="js/jquery-3.1.1.js"></script>
+  <script>
+    //创建元素函数
+    var element= function (tag,attrs,html) {
+      var element = document.createElement(tag);
+      // 判断第二个参数是属性还是内容
+      if(typeof(attrs) === "string"){
+        html = attrs;
+        attrs = null;
+      }
+      // 判断是否有属性
+      if(attrs !== undefined){
+        for(var attr in attrs){
+          element.setAttribute(attr,attrs[attr]);
+        }
+      }
+      // 判断是否有内容
+      if(html !== undefined){
+        element.innerHTML = html;
+      }
+      return element;
+    };
+    $.ajax({
+      url:"data/get.php",
+      type:"get",
+      success:function (data) {
+        var newsList = data.result.data;
+        var page = document.createDocumentFragment();
+        for(var i = 0,item;item = newsList[i++];){
+          var news = element(
+            "div",
+            {"class":"item"},
+            "<p>"+item.title+"</p>"+
+            "<img src='"+item.thumbnail_pic_s+"' />"+
+            "<a href='"+item.url+"' target='_blank'>查看详情</a>"+
+            "<p>"+item.date+" &nbsp;&nbsp;&nbsp;来源："+item.author_name+"</p>"
+          );
+          $(news).appendTo($(page));
+        };
+        $(".container").html($(page));
+      },
+      error:function (data) {
+        console.log(data.responseText);
+      }
+    });
+  </script>
+</body>
+</html>
