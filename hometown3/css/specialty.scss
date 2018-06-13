@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.thumbnail{
+  cursor: pointer;
+  &:hover{
+    -webkit-box-shadow: 0 0 10px rgba(0,0 ,0 ,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  >img{
+    max-height: 120px;
+    width: auto;
+  }
+  .caption{
+    >.caption-text{
+      height: 100px;
+      width: 100%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 5;
+      white-space: normal;
+      text-overflow: ellipsis;
+    }
+  }
+}
+

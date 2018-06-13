@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>最新笑话</title>
+  <style>
+    .container{width: 500px;margin: 0 auto;}
+    .btn{width: 500px;margin: 20px auto;text-align: center;}
+    .btn:after{content: "";display: table;clear: both}
+    .btn p{padding: 5px 10px;border: 1px solid #eee;cursor: pointer;}
+    .btn .prev{float: left;}
+    .btn .next{float: right;}
+    .btn .page{display: inline-block;margin-top: 20px;}
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <div class="btn">
+    <p class="prev">上一页</p>
+    <span class="page"></span>
+    <p class="next">下一页</p>
+  </div>
+  <script src="js/jquery-3.1.1.js"></script>
+  <script>
+    var app = {
+      page: 1,
+      init: function () {
+        this.get(this.page);
+        this.btn();
+      },
+      element: function (tag,attrs,html) {
+        var element = document.createElement(tag);
+        // 判断第二个参数是属性还是内容
+        if(typeof(attrs) === "string"){
+          html = attrs;
+          attrs = null;
+        }
+        // 判断是否有属性
+        if(attrs !== undefined){
+          for(var attr in attrs){
+            element.setAttribute(attr,attrs[attr]);
+          }
+        }
+        // 判断是否有内容
+        if(html !== undefined){
+          element.innerHTML = html;
+        }
+        return element;
+      },
+      get:function (page) {
+        this.page = page;
+        $(".btn .page").html(this.page);
+        $.ajax({
+          url:"data/get-joke.php?page="+page,
+          type: "get",
+          success:function (data) {
+            var arr = data.result.data;
+            var page = document.createDocumentFragment();
+            for(var i =0,item;item = arr[i++];){
+              var itemP = this.element(
+                "p",
+                item.content
+              );
+              $(itemP).appendTo($(page));
+            }
+            $(".container").html($(page));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+          }.bind(this)
+        })
+      },
+      btn:function () {
+        $(".btn p").on("click",function (e) {
+          var e = $(e.target).attr("class");
+          e === "prev"? this.page--:this.page++;
+          if (this.page < 1){
+            this.page = 1;
+          }
+          this.get(this.page);
+        }.bind(this));
+      }
+    };
+    app.init();
+  </script>
+</body>
+</html>

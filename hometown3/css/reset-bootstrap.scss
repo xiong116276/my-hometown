@@ -1,0 +1,38 @@
+@charset "utf-8";
+@media (min-width: 1200px){
+  .container {
+    width: 1030px !important;
+  }
+}
+
+.navbar{
+  .navbar-nav{
+    text-align: center;
+    li{
+      a{
+        padding: 15px 30px;
+      }
+      &:hover,&.selected{
+        background-color: #00ff00;
+        a{
+          color: #fff;
+        }
+      }
+    }
+  }
+  .navbar-brand{
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    img{
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+
+
+
+

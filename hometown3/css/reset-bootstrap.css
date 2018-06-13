@@ -1,0 +1,13 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 1030px !important; } }
+.navbar .navbar-nav {
+  text-align: center; }
+  .navbar .navbar-nav li a {
+    padding: 15px 30px; }
+  .navbar .navbar-nav li:hover, .navbar .navbar-nav li.selected {
+    background-color: #00ff00; }
+    .navbar .navbar-nav li:hover a, .navbar .navbar-nav li.selected a {
+      color: #fff; }
+
+/*# sourceMappingURL=reset-bootstrap.css.map */

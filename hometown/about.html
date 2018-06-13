@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>关于淅川</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta name="keywords" content="xichuan,淅川,淅川人,淅川县,南阳淅川,河南淅川,南水北调,渠首">
+  <meta name="description" content="南阳市淅川县介绍">
+  <link rel="icon" href="images/xichuan.ico"/>
+  <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+  <link rel="stylesheet" href="css/base.min.css">
+  <link rel="stylesheet" href="css/common.min.css">
+  <link rel="stylesheet" href="css/main.min.css">
+  <!--百度地图-->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=ok8PRZkbgozgGkRQSKAzKQzpeIpGqoPe"
+          type="text/javascript"></script>
+</head>
+<body>
+
+  <!--banner轮播-->
+  <section id="section-banner"></section>
+  <section class="container">
+    <!--导航栏-->
+    <div id="home-nav"></div>
+
+    <div class="nav-container clearfix">
+      <!--左侧-->
+      <div id="left-container"></div>
+      <!--主要内容-->
+      <div class="main-container">
+        <div class="about-content">
+          <div class="about-group">
+            <h1 class="title">淅川县</h1>
+            <div class="about-text">
+              淅川县是河南省南阳市下辖县，位于豫西南边陲，豫、鄂、陕三省交界的黄金地带，因淅水纵贯境内形成百里冲积平川而得名。淅川地势险要，古战乱时期易守难攻，有“中原未战，淅境兵动”之称。
+            </div>
+            <div class="about-text">
+              淅川古称丹阳，历史悠久，文化灿烂，是楚文化的发祥地之一。春秋时为楚国始都丹阳所在地，楚国800多年历史中有300多年定都丹阳，楚人以丹阳为起点，取威定霸于春秋战国，开疆拓土，一路南征，先后统一50多个小国，成为南方霸主，并创造了灿烂的文化。曾孕育了一代商圣范蠡、史学家范晔、唯物主义思想家范缜等一批有重要影响的历史人物。
+            </div>
+            <div class="about-text">
+              淅川依山傍水，旅游资源丰富。是世界最大调水工程南水北调中线工程核心水源地和渠首工程所在地。拥有亚洲最大的人工淡水湖丹江口水库，“天下第一渠首”南水北调中线工程渠首，全国重点文物保护单位千年古刹香严寺和荆紫关古镇以及丹江大观苑、八仙洞、坐禅谷、神仙洞景区、丹江湿地国家级自然保护区等景区是河南省人民政府确定的全省八条旅游热线之一。形成了以南水北调中线工程渠首生态观光带为龙头的中原旅游名城和国内旅游热点城市。
+            </div>
+            <div class="about-text">
+              淅川县是全国第一移民大县，先后荣获“中国民间文化艺术之乡”、“全国平安渔业示范县”、“全国科技进步先进县”等荣誉称号。2015年淅川被国家文化部评为“全国文化先进县”，2017年国家发改委下发《关于明确新增国家重点生态功能区类型的通知》淅川县入选“国家重点生态功能区”。
+            </div>
+          </div>
+          <div class="about-group">
+            <h1 class="title">行政区划</h1>
+            <div class="about-text">
+              截止2012年4月，淅川县辖4个乡（大石桥乡、毛堂乡、西簧乡、滔河乡），11个镇（荆紫关镇、寺湾镇、香花镇、九重镇、厚坡镇、老城镇、马蹬镇、上集镇、盛湾镇、金河镇、仓房镇），2个街道办事处（龙城街道办事处、商圣街道办事处）。
+            </div>
+          </div>
+          <div class="about-group">
+            <h1 class="title">地理位置</h1>
+            <div class="about-text">
+              淅川县位于河南省西南部，南阳盆地西缘，与陕西省、湖北省相邻，地理坐标北纬32°55′—33°23′，东经110°58′—111°53′。
+            </div>
+            <div class="about-map" id="myMap">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="footer"></footer>
+  <script src="js/jquery-3.1.1.js"></script>
+  <script src="js/swiper-3.4.2.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script>
+    $("#section-banner").load("public/public.html .section-banner");
+    $("#home-nav").load("public/public.html .home-nav");
+    $("#left-container").load("public/public.html .left-container");
+    $("#footer").load("public/public.html .footer");
+    app.map();
+  </script>
+</body>
+</html>

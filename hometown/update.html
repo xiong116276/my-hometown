@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>新闻更新</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <link rel="icon" href="images/xichuan.ico"/>
+  <link rel="stylesheet" href="css/base.min.css">
+  <link rel="stylesheet" href="css/update.css">
+</head>
+<body>
+  <section class="content hide">
+    <p class="top">新闻公告管理</p>
+    <p class="user"></p>
+    <div class="news-list">
+      <div class="title clearfix">
+        <p class="list-nid">nid</p>
+        <p class="list-href">href</p>
+        <p class="list-title">title</p>
+        <p class="list-ntime">ntime</p>
+        <p class="list-operation">操作</p>
+      </div>
+      <div class="list-content"></div>
+    </div>
+  </section>
+  <section class="login">
+    <form action="">
+      <div class="input-group">
+        <input type="text" name="aname" placeholder="请输入账号">
+      </div>
+      <div class="input-group">
+        <input type="password" name="apassword" placeholder="请输入密码">
+      </div>
+      <div class="btn-login">
+        登录
+      </div>
+    </form>
+  </section>
+  <script src="js/jquery-3.1.1.js"></script>
+  <script>
+    var update = {
+      init:function () {
+        this.login();
+        this.refresh();
+      },
+      element: function (tag,attrs,html) {
+        var element = document.createElement(tag);
+        // 判断第二个参数是属性还是内容
+        if(typeof(attrs) === "string"){
+          html = attrs;
+          attrs = null;
+        }
+        // 判断是否有属性
+        if(attrs !== undefined){
+          for(var attr in attrs){
+            element.setAttribute(attr,attrs[attr]);
+          }
+        }
+        // 判断是否有内容
+        if(html !== undefined){
+          element.innerHTML = html;
+        }
+        return element;
+      },
+      login:function () {
+        $(".btn-login").on("click",function (e) {
+          var e = e.target;
+
+          var aname = $(e).parents("form").find("[name='aname']").val();
+          var apassword = $(e).parents("form").find("[name='apassword']").val();
+          var account = $(e).parents("form").serialize();
+
+          if(aname.length > 0&&apassword.length > 0){
+            $.ajax({
+              url:"data/login.php?"+account,
+              type:"post",
+              success:function (data) {
+                switch (data.state){
+                  case 0 :
+                    alert("账户不存在！");
+                    break;
+                  case 1 :
+                    alert("登录成功！");
+                    sessionStorage.setItem("aname",aname);
+                    sessionStorage.setItem("apassword",apassword);
+                    this.getList();
+                    this.updateFun();
+                    $(".login").addClass("hide");
+                    $(".content").removeClass("hide");
+                    $(".user").html("欢迎"+sessionStorage.getItem("aname"));
+                    break;
+                  case 2 :
+                    alert("密码错误！");
+                    break;
+                }
+              }.bind(this),
+              error:function (data) {
+                console.log(data.responseText);
+              }
+            });
+          }
+        }.bind(this));
+      },
+      getList:function () {
+        $.ajax({
+          url: "data/get-news.php",
+          type: "get",
+          success:function (data) {
+            var list = document.createDocumentFragment();
+            for(var i =0;i<data.length;i++){
+              var item = this.element(
+                "div",
+                {
+                  "class":"list-item clearfix"
+                },
+                "<form action=\"\">\n" +
+                "  <textarea style=\"resize: none\" name=\"nid\" class=\"list-nid\">"+data[i].nid+"</textarea>\n" +
+                "  <textarea style=\"resize: none\" name=\"href\" class=\"list-href\">"+data[i].href+"</textarea>\n" +
+                "  <textarea style=\"resize: none\" name=\"title\" class=\"list-title\">"+data[i].title+"</textarea>\n" +
+                "  <textarea style=\"resize: none\" name=\"ntime\" class=\"list-ntime\">"+data[i].ntime+"</textarea>\n" +
+                "  <div class=\"list-operation\">\n" +
+                "    提交\n" +
+                "  </div>\n" +
+                "</form>"
+              );
+              $(item).appendTo($(list));
+            }
+            $(list).appendTo($(".list-content"));
+          }.bind(this)
+        });
+      },
+      updateFun:function () {
+        $(".list-content").on("click",".list-operation",function (e) {
+          var e = e.target;
+          var update = $(e).parents("form").serialize();
+          $.ajax({
+            url: "data/update.php?"+update,
+            type: "get",
+            success:function (data) {
+              alert(data.msg);
+            }.bind(this)
+          });
+        }.bind(this));
+      },
+      refresh:function () {
+        if((sessionStorage.getItem("aname").length > 0) && (sessionStorage.getItem("apassword").length > 0)){
+          $(".login").addClass("hide");
+          $(".content").removeClass("hide");
+          update.getList();
+          update.updateFun();
+          $(".user").html("欢迎 "+sessionStorage.getItem("aname"));
+        }
+      }
+    };
+    update.init();
+  </script>
+</body>
+</html>

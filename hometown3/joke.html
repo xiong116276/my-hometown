@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta name="keywords" content="xiaohua,笑话,最新笑话,笑话大全,小笑话">
+  <meta name="description" content="一个简单的看笑话的应用">
+  <link rel="icon" href="images/xichuan.ico"/>
+  <title>最新笑话</title>
+  <style>
+		*{
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.title{
+			position: fixed;
+			top:0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			max-width: 750px;
+			margin: auto;
+			text-align: center;
+			background-color: #fff;
+			font-size: 20px;
+			font-family: KaiTi;
+			height: 45px;
+			line-height: 45px;
+		}
+    .container{
+			width: 100%;
+			margin: 45px auto 80px;
+			max-width: 750px;
+			padding: 0 10px;
+			counter-reset: list;
+		}
+		.container >p{
+			margin-bottom: 20px;
+		}
+		.container >p:before{
+			counter-increment: list 1;
+			content: counter(list)'、';
+		}
+    .btn{
+			position: fixed;
+			margin: auto;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			max-width: 750px;
+			text-align: center;
+			background-color: #fff;
+			padding: 10px;
+		}
+    .btn:after{content: "";display: table;clear: both}
+    .btn p{padding: 5px 10px;border: 1px solid #eee;cursor: pointer;}
+    .btn .prev{float: left;}
+    .btn .next{float: right;}
+    .btn .page{display: inline-block;margin-top: 6px;}
+  </style>
+</head>
+<body>
+	<div class="title">最新笑话</div>
+  <div class="container"></div>
+  <div class="btn">
+    <p class="prev">上一页</p>
+    <span class="page"></span>
+    <p class="next">下一页</p>
+  </div>
+  <script src="js/jquery-3.1.1.js"></script>
+  <script>
+    var app = {
+      page: 1,
+      init: function () {
+        this.get(this.page);
+        this.btn();
+      },
+      element: function (tag,attrs,html) {
+        var element = document.createElement(tag);
+        // 判断第二个参数是属性还是内容
+        if(typeof(attrs) === "string"){
+          html = attrs;
+          attrs = null;
+        }
+        // 判断是否有属性
+        if(attrs !== undefined){
+          for(var attr in attrs){
+            element.setAttribute(attr,attrs[attr]);
+          }
+        }
+        // 判断是否有内容
+        if(html !== undefined){
+          element.innerHTML = html;
+        }
+        return element;
+      },
+      get:function (page) {
+        this.page = page;
+        $(".btn .page").html(this.page);
+        $.ajax({
+          url:"data/get-joke.php?page="+page,
+          type: "get",
+          success:function (data) {
+            var arr = data.result.data;
+            var page = document.createDocumentFragment();
+            for(var i =0,item;item = arr[i++];){
+              var itemP = this.element(
+                "p",
+                item.content
+              );
+              $(itemP).appendTo($(page));
+            }
+            $(".container").html($(page));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+          }.bind(this)
+        })
+      },
+      btn:function () {
+        $(".btn p").on("click",function (e) {
+          var e = $(e.target).attr("class");
+          e === "prev"? this.page--:this.page++;
+          if (this.page < 1){
+            this.page = 1;
+          }
+          this.get(this.page);
+        }.bind(this));
+      }
+    };
+    app.init();
+  </script>
+  <script>
+    //百度推送
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+</body>
+</html>

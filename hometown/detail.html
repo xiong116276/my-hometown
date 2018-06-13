@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title></title>
+  <link rel="icon" href="images/xichuan.ico"/>
+  <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+  <link rel="stylesheet" href="css/base.min.css">
+  <link rel="stylesheet" href="css/common.min.css">
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+<body>
+
+<!--banner轮播-->
+<section class="section-banner">
+  <div class="home-banner">
+    <div class="swiper-container swiper-container1">
+      <div class="swiper-wrapper"></div>
+      <!-- 分页器 （导航小圆点）-->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+</section>
+<section class="container">
+  <!--导航栏-->
+  <nav class="home-nav">
+    <ul class="clearfix">
+      <li ><a href="index.html">首页</a></li>
+      <li class="active"><a href="specialty.html">淅川特产</a></li>
+      <li><a href="scenery.html">风景名胜</a></li>
+      <li><a href="about.html">关于淅川</a></li>
+      <li><a href="leave-word.html">雁过留声</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-container clearfix">
+    <!--左侧-->
+    <div class="left-container">
+      <div class="symbolic-img">
+        <img class="center" src="images/symbolic-01.jpg" alt="">
+      </div>
+      <div class="news-bulletin">
+        <p class="news-bulletin-title">新闻公告</p>
+        <div class="news-bulletin-content"></div>
+      </div>
+    </div>
+    <!--主要内容-->
+    <div class="main-container">
+      <div class="detail-content">
+        <div class="detail-title"></div>
+        <div class="detail-banner">
+          <div class="swiper-container swiper-container3">
+            <div class="swiper-wrapper"></div>
+            <!-- 分页器 （导航小圆点）-->
+            <div class="swiper-pagination"></div>
+            <!--前进后退-->
+            <div class="swiper-button-prev swiper-button-white hide"></div>
+            <div class="swiper-button-next swiper-button-white hide"></div>
+          </div>
+        </div>
+        <div class="detail-describe"></div>
+        <div class="btn-group clearfix">
+          <div class="btn btn-prev">
+            <a href="javascript:void(0);">
+              上一条
+            </a>
+          </div>
+          <div class="btn btn-next">
+            <a href="javascript:void(0);">
+              下一条
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<!--图片展示 large-->
+<section class="picture-large-show hide">
+  <div class="picture-mask"></div>
+  <i class="icon-mask-close"></i>
+  <img class="center" src="" alt="">
+  <div class="btn btn-prev">上一张</div>
+  <div class="btn btn-next">下一张</div>
+</section>
+
+<footer class="footer">
+  <div class="contact-way clearfix">
+    <span>联系方式 :</span>
+    <div class="contact-item">
+      <img class="center" src="images/QRcode-weChat.jpg" alt="">
+      <span>微信二维码</span>
+    </div>
+    <div class="contact-item">
+      <img class="center" src="images/QRcode-qq.jpg" alt="">
+      <span>QQ二维码</span>
+    </div>
+  </div>
+  <p class="beian">
+    <a href="http://www.miitbeian.gov.cn" target="_blank">
+      网站备案号 : 豫ICP备17018136号
+    </a>
+  </p>
+</footer>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="js/main.min.js"></script>
+<script>
+  app.detailFun();
+</script>
+</body>
+</html>

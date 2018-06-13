@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import "reset-bootstrap";
+@import "home";
+@import "specialty";
+@import "detail";
+@import "leave-word";
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+//关于
+.about-content{
+  .title{
+    font-size: 25px;
+    padding: 10px 0 0 10px;
+  }
+}
+
+.about-text{
+  text-indent: 30px;
+  padding: 0 10px 10px;
+  line-height: 25px;
+}
+.about-map{
+  height: 300px;
+  margin: 10px;
+}
+
+
